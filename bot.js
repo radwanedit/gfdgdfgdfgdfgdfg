@@ -14,16 +14,30 @@ client.on('ready', () => {
 
 
 
-client.on('guildMemberAdd', member => {
-    var embed = new Discord.RichEmbed()
-    .setThumbnail('http://www.dallasfirstumc.org/wp-content/uploads/2017/06/Welcome-White_on_Blue-welcome.jpg')//member.user.avatarURL
-  .addField("***شكرا الانضمامك الينا***" ,member.user.username )
-    .setDescription('***اهلا وسهلا بك في السيرفر يرجى قراءة القوانين لتجنب العقاب***')
-    .setColor('RANDOM')
-    .setImage(member.user.avatarURL)
-var channel =member.guild.channels.find('name', 'welcome')
-if (!channel) return;
-channel.send({embed : embed});
+client.on('message', message => {
+ if (message.content.startsWith("ترحيب 10")) {
+                                 var mentionned = message.mentions.users.first();
+             var mentionavatar;
+               if(mentionned){
+                   var mentionavatar = mentionned;
+               } else {
+                   var mentionavatar = message.author;
+                   
+               }
+               let bot;
+               if(message.author.bot) {
+                   bot = 'Bot'
+               } else {
+                   bot = 'User'
+               } 
+  var EsTeKnAN = new Discord.RichEmbed()
+  .setColor('RANDOM')
+  .setThumbnail(`${mentionavatar.avatarURL}`)
+  .addField("***شكرا الانضمامك الينا***" ,mentionavatar.username )
+  .setDescription('***كل شيء يرحب بك كل شيء يتبسم ويتوهج فرحاً بقدومك كل شيء ينمق عبارات الترحيب ويصوغ كلمات الحب لوجودك كل شيء ينتظر مشارك��تك وقلمك الرائع وأبداعاتك كل شيء يردد حياك الله.***')
+  .setImage('https://www.askideas.com/media/13/Beautiful-Wooden-Welcome-Sign.jpg')
+   message.channel.sendEmbed(EsTeKnAN);
+  }
 });
 
 
