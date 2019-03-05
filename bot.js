@@ -15,7 +15,7 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
- if (message.content.startsWith("ترحيب 10")) {
+ if (message.content.startsWith("welcome")) {
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
